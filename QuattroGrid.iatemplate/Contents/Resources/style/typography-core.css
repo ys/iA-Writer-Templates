@@ -1,0 +1,185 @@
+html {
+  --font-size: 18px;
+}
+
+@media screen {
+  html.content-size-4xs {
+    --font-size: 11px;
+  }
+  html.content-size-3xs {
+    --font-size: 12px;
+  }
+  html.content-size-2xs {
+    --font-size: 13px;
+  }
+  html.content-size-xs {
+    --font-size: 14px;
+  }
+  html.content-size-s {
+    --font-size: 15px;
+  }
+  html.content-size-m {
+    --font-size: 16px;
+  }
+  html.content-size-l {
+    --font-size: 18px;
+  }
+  html.content-size-xl {
+    --font-size: 20px;
+  }
+  html.content-size-2xl {
+    --font-size: 24px;
+  }
+  html.content-size-3xl {
+    --font-size: 28px;
+  }
+  html.content-size-4xl {
+    --font-size: 32px;
+  }
+  html.content-size-5xl {
+    --font-size: 36px;
+  }
+  html.content-size-6xl {
+    --font-size: 42px;
+  }
+  html.content-size-7xl {
+    --font-size: 48px;
+  }
+  html.content-size-8xl {
+    --font-size: 54px;
+  }
+  html.content-size-9xl {
+    --font-size: 60px;
+  }
+  html.content-size-10xl {
+    --font-size: 72px;
+  }
+}
+
+@media print {
+  html {
+    --font-size: 13px;
+  }
+}
+
+/* Font Size */
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Minimap */
+
+@media screen and (max-width: 180px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media screen and (max-width: 165px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+@media screen and (max-width: 150px) {
+  html {
+    font-size: 6px;
+  }
+}
+
+@media screen and (max-width: 135px) {
+  html {
+    font-size: 5px;
+  }
+}
+
+@media screen and (max-width: 120px) {
+  html {
+    font-size: 4.5px;
+  }
+}
+
+@media screen and (max-width: 114px) {
+  html {
+    font-size: 3.5px;
+  }
+}
+
+@media screen and (max-width: 105px) {
+  html {
+    font-size: 3px;
+  }
+}
+
+@media screen and (max-width: 97px) {
+  html {
+    font-size: 2.5px;
+  }
+}
+
+@media screen and (max-width: 92px) {
+  html {
+    font-size: 2px;
+  }
+}
+
+@media screen and (max-width: 90px) {
+  html {
+    font-size: 1.85px;
+  }
+}
+
+@media screen and (max-width: 88px) {
+  html {
+    font-size: 1.7px;
+  }
+}
+
+@media screen and (max-width: 85px) {
+  html {
+    font-size: 1.5px;
+  }
+}
+
+@media screen and (max-width: 84px) {
+  html {
+    font-size: 1.4px;
+  }
+}
+
+@media screen and (max-width: 83px) {
+  html {
+    font-size: 1.3px;
+  }
+}
+
+@media screen and (max-width: 82px) {
+  html {
+    font-size: 1.2px;
+  }
+}
+
+@media screen and (max-width: 81px) {
+  html {
+    font-size: 1.1px;
+  }
+}
+
+@media screen and (max-width: 80px) {
+    html {
+      font-size: 1px;
+    }
+}
+
+html {
+  --line-height: calc((var(--line-height-base) + var(--line-height-base-viewport-adjustment)) / 100);
+  line-height: var(--line-height);
+  /* macOS 10.11 does not support nested calc which happens when calc using var that uses calc, so we manually copy the formula directly. */
+  /* --checkbox-size: calc(var(--line-height) * 1em); */
+  --checkbox-size: calc((var(--line-height-base) + var(--line-height-base-viewport-adjustment)) / 100 * 1em);
+  --checkbox-margin-size: calc((var(--line-height-base) + var(--line-height-base-viewport-adjustment)) / 100 * -1em);;
+  --checkbox-counter-offset-multiplier: 0.5em;
+  /* --checkbox-counter-offset: calc(var(--line-height) * var(--checkbox-counter-offset-multiplier)); */
+  --checkbox-counter-offset: calc((var(--line-height-base) + var(--line-height-base-viewport-adjustment)) / 100 * var(--checkbox-counter-offset-multiplier));
+}

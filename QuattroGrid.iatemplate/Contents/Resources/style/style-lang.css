@@ -1,0 +1,23 @@
+
+em {
+    font-synthesis: style;
+}
+
+.emphasis-mark em, em.emphasis-mark {
+    font-style: normal;
+    font-synthesis: none;
+}
+
+.emphasis-mark em:lang(zh), em.emphasis-mark:lang(zh),
+.emphasis-mark em:lang(x-default-zh), em.emphasis-mark:lang(x-default-zh){
+    text-emphasis-style: '\E000';
+    text-emphasis-position: under;
+}
+
+.emphasis-mark em:lang(ja), em.emphasis-mark:lang(ja),
+.emphasis-mark em:lang(x-default-ja), em.emphasis-mark:lang(x-default-ja),
+.emphasis-mark em:lang(ko), em.emphasis-mark:lang(ko),
+.emphasis-mark em:lang(x-default-ko), em.emphasis-mark:lang(x-default-ko) {
+    text-emphasis-style: '\E000';
+    text-emphasis-position: over;
+}

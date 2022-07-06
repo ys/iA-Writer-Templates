@@ -1,0 +1,658 @@
+/**
+ * iA Writer core.css:
+ * Base styles for all templates
+ *
+ * - Generic
+ * - Base
+ * - Objects
+ *
+ * Notes:
+ * - CSS load order: normalize.css, core.css (base styles), style.css (theme styles)
+ * - Margins are in %s (of viewport or container width) via calc() to scale fluidly
+ * - Margin/padding scaling is declared in calc() for container width: 1080px, then stopped via @media
+ * - font-size is set on body using px for breakpoints, then rems or ems per element to scale
+ */
+
+/* TOOLS */
+
+/* box-sizing */
+
+* {
+  box-sizing: border-box;
+}
+
+/* BASE */
+
+html,
+a {
+  color: #1a1a1a;
+}
+
+html {
+  background-color: #fefefe; /* iOS background color */
+}
+
+body {
+  box-sizing: content-box; /* So measure calculations don’t need to include gutters */
+  margin: 0 auto;
+  padding: 0 12px; /* 12px gutters to match iPhone 5 Title bar UI */
+  word-wrap: break-word;
+  text-rendering: optimizeLegibility; /* NOTE May cause performance issues */
+  /* font-kerning is enabled by default in OS X Safari 7+ */
+  -webkit-font-kerning: normal;
+  font-kerning: normal;
+}
+
+body > *:first-child {
+   margin-top: 0;
+}
+
+/* iOS gutters responsive adjustments */
+
+body {
+    --padding: 10px;
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+}
+
+@supports (padding: constant(safe-area-inset-left)) and (padding: constant(safe-area-inset-right)) {
+    body {
+        padding-left: calc(var(--padding) + constant(safe-area-inset-left));
+        padding-right: calc(var(--padding) + constant(safe-area-inset-right));
+    }
+}
+
+@supports (padding: env(safe-area-inset-left)) and (padding: env(safe-area-inset-right)) {
+    body {
+        padding-left: calc(var(--padding) + env(safe-area-inset-left));
+        padding-right: calc(var(--padding) + env(safe-area-inset-right));
+    }
+}
+
+@media screen and (min-width: 375px) {
+  body {
+    --padding: 18px;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  body {
+    --padding: 20px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    --padding: 32px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    --padding: 48px;
+  }
+}
+
+/* iPad triggered on 760 not 768 to work with fonts */
+@media screen and (min-width: 760px) and (max-device-width: 1024px) {
+  body {
+    --padding: 70px;
+  }
+}
+
+html.mac {
+  background-color: #fcfcfc;
+}
+
+html.mac body {
+  --padding: 24px;
+}
+
+@media screen and (min-width: 480px) {
+  html.mac body {
+    --padding: 48px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  html.mac body {
+    --padding: 72px;
+  }
+}
+
+/* Headings */
+
+body > h1:first-child {
+    margin-top: 0; /* Controlled via body padding-top */
+}
+
+/* Unify space above initial heading in blockquotes (based on 31px line-height) */
+blockquote > :-webkit-any(h1, h2, h3, h4, h5):first-child {
+  margin-top: calc((21 / 1080) * 100%); /* 20px when width: 1080px */
+  padding-top: calc((10 / 1080) * 100%);/* 10px when width: 1080px */
+}
+
+@media screen and (min-width: 1080px) {
+  blockquote > :-webkit-any(h1, h2, h3, h4, h5):first-child {
+    margin-top: 21px;
+    padding-top: 10px;
+  }
+}
+
+/* Display h6 as run-in by default when followed by p
+   (h6 is no longer run-in if content is greater than one line long. Display can break if consecutive h6s are used before a <1 line p)
+   Note: Specced ways to do this display:run-in and :has() are not implemented at time of writing */
+h6 {
+  float: left;
+  margin: 0 0.5em 0 0; /* 9px @ font-size: 18px */
+}
+
+  /* Clear all siblings after floated h6… */
+h6 ~ * {
+  clear: both;
+}
+
+  /* …except immediately following paragraph */
+h6 + p {
+  clear: none;
+}
+
+/* Responsive list padding (default used by Sans, overridden for Mono and Serif) */
+ul,
+ol {
+  padding-left: 1.5rem; /* 22.5px for font-size: 15px @320px. rem works better for RWD than % */
+}
+
+@media screen and (min-width: 760px) {
+  /* Left padding based on 40px browser default */
+  ul,
+  ol {
+    padding-left: 2.2222rem; /* ~40px for font-size: 18px. rem works better for RWD than % */
+  }
+}
+
+/* HACK: Prevent empty list items collapsing
+   Note this doesn’t work for paragraph lists, although we can fix via class or once has() is supported with: `ul li:not:has(p)::after` */
+ul li:empty::after,
+.task-list-item:last-child::after {
+  content: "";
+  display: inline-block;
+}
+
+dd {
+  -webkit-margin-start: 2.2222rem; /* ~40px for font-size: 18px. rem works better for RWD than % */
+  margin-start: 2.2222rem;
+}
+
+/* Remove vertical margins on nested lists */
+:-webkit-any(li, dt, dd, th, td) > :-webkit-any(ul, ol, dl) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Override vertical margin above paragraph list items */
+:-webkit-any(li) > :-webkit-any(p, pre, figure, img) {
+    margin-top: 0;
+}
+
+/* img is wrapped in p on export by default, so leave as inline */
+img {
+  max-width: 100%;
+  height: auto;
+  height: auto;
+  vertical-align: top;
+}
+
+figure img {
+  display: block;
+}
+
+figcaption {
+    text-align: center;
+}
+
+.emphasis-italic figcaption {
+    font-style: italic;
+}
+
+hr {
+  clear: both;
+  margin: 3rem auto 3rem; /* Extra-large for visibility in mini-map (<100px wide) */
+  border: 0;
+  border-bottom: 1px #e6e6e6 solid;
+}
+
+/* More reasonable default to override per template */
+@media screen and (min-width: 100px) {
+  hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Horizontal rule responsive adjustments */
+@media screen and (min-width: 1080px) {
+  hr {
+    margin-top: 46px;
+    margin-bottom: 46px;
+  }
+}
+
+
+/* table-layout: fixed; produces equal-width columns, which is generally a better result */
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-top: 1px #e6e6e6 solid;
+  border-bottom: 1px #e6e6e6 solid;
+  border-collapse: collapse;
+  font-size: calc((15 / 18) * 1rem); /* 0.8333rem = 15px @ font-size: 18px */
+  line-height: calc(24 / 15); /* 1.6 = 24px @ font-size: 15px */
+  font-variant-numeric: tabular-nums;
+  -moz-font-feature-settings: "tnum";
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum";
+}
+
+caption {
+  caption-side: bottom;
+  font-size: 1rem;
+}
+
+.emphasis-italic caption {
+  font-style: italic;
+}
+
+.emphasis-mark dfn {
+  font-style: normal;
+}
+
+caption, figcaption {
+    padding-top: calc((20 / 1080) * 100%); /* 10px when width: 1080px */
+    padding-bottom: calc((10 / 1080) * 100%); /* 10px when width: 1080px */
+}
+
+tbody {
+  border-top: 1px #e6e6e6 solid;
+}
+
+th,
+td {
+  margin-right: calc((30 / 1080) * 100%); /* 30px when width: 1080px */
+  padding: calc((10 / 1080) * 100%) calc((10 / 1080) * 100%) calc((10 / 1080) * 100%) calc((10 / 1080) * 100%); /* 10px 0 10px when width: 1080px */
+  vertical-align: top;
+  text-align: left;
+}
+
+/* Table cell responsive adjustments */
+@media screen and (min-width: 1080px) {
+  caption,
+  th,
+  td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  th,
+  td {
+    margin-right: 30px;
+  }
+}
+
+th:last-of-type,
+td:last-of-type {
+  margin-right: 0;
+}
+
+/* Code */
+
+pre,
+code,
+kbd {
+  border-radius: 2px;
+  white-space: pre-wrap;
+  background-color: rgba(36, 36, 36, 0.055);
+}
+
+pre code {
+  background-color: transparent;
+}
+
+figure pre {
+  margin-top: 0;
+}
+
+pre {
+  padding: 1rem;
+  overflow: hidden;
+}
+
+pre code {
+  padding: 0;
+}
+
+code,
+kbd {
+  padding: 0.08333em 0.1667em 0.1667em; /* ~1px 2px 2px when font-size: 12px, taking 1px border into account */
+}
+
+/* Prevent code line-height increasing heading line-height */
+:-webkit-any(h1, h2, h3, h4, h5, h6) > code, kbd {
+  line-height: normal;
+}
+
+/* Print styles */
+@media print {
+
+  *:not(.katex *, .task-list-item-checked-fade .task-list-item:has(.task-list-item-checkbox:checked), .task-list-item-checked-fade .task-list-item:has(.task-list-item-checkbox:checked) a, .task-list-item-checked-fade .task-list-item:has(.task-list-item-checkbox:checked) mark),
+  *:not(.katex *):before,
+  *:not(.katex *):after {
+    color: #000 !important; /* black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html {
+    margin: 0; /* Override for safety */
+    padding: 0; /* Override for safety */
+    font-size: 9pt; /* ← needs to be set per template to counter responsive typography */
+    background: transparent !important; /* Only on html due to checkboxes */
+  }
+
+  body {
+    margin: 0 auto; /* Set all values for safety */
+    padding: 12pt 50pt; /* Set all values for safety */
+  }
+
+  /* Make sure there’s no margin-top on first element */
+  body > :first-child {
+    margin-top: 0;
+  }
+
+  /* give elements on new pages the same top margin as first element of document */
+  .page-break + * {
+    margin-top: 0;
+  }
+
+  /* h6 excluded as the page-break-inside rule conflicts with page-initial inline h6 when printed */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  img,
+  figure {
+    page-break-inside: avoid;
+    page-break-after: avoid; /* Not supported by Webkit at time of writing, ref: https://bugs.webkit.org/show_bug.cgi?id=5097 */
+  }
+
+  h1::after,
+  h2::after,
+  h3::after,
+  h4::after,
+  h5::after {
+    /* Increase the calculated height of headlines by using an invisible element which allows page-break-inside: avoid to work, thanks to: https://github.com/iainc/iA-Writer-Templates/pull/41 */
+    content: "";
+    display: block;
+    height: 50px;
+    margin-bottom: -50px;
+  }
+
+  p {
+    widows: 3;
+    orphans: 3;
+  }
+
+  hr {
+    border-bottom-color: #000 !important;
+  }
+
+  /* Underline on superscript footnote number, which when clicked shows an error */
+  .footnote {
+    text-decoration: none;
+  }
+
+  /* Underline for table of contents on printed pages */
+  .TOC a {
+    text-decoration: none;
+  }
+
+  /* Link which allows you to go back to the text from footnote—useless on a printed page */
+  .reversefootnote {
+    display: none;
+  }
+
+  .tooltip:after {
+    display: none;
+  }
+}
+
+
+/* OBJECTS */
+
+/* Center Headings
+   Center h1-h5 headings, via the Centered Headings setting */
+.center-headings :-webkit-any(h1, h2, h3, h4, h5) {
+  text-align: center;
+}
+
+/* Indent Paragraphs
+   Indent the first line of sequential paragraphs, via the Indent Paragraph setting */
+.indent-paragraphs p + p {
+  margin-top: 0;
+  text-indent: 1.2em; /* Tweaked per template */
+}
+
+/* Night Mode */
+
+.night-mode,
+.night-mode a {
+  color: #dedede; /* iOS text color */
+}
+
+.night-mode {
+  background-color: #101010; /* iOS background color */
+}
+
+.night-mode pre,
+.night-mode code,
+.night-mode kbd {
+  background-color: rgba(245, 245, 245, 0.06);
+}
+
+.night-mode pre code {
+  background-color: transparent;
+}
+
+.mac.night-mode,
+.mac.night-mode a {
+  color: #cccccc; /* OS X text color */
+}
+
+.mac.night-mode {
+  background-color: #101010;
+}
+
+/* Fake sub-pixel lines */
+.night-mode hr,
+.night-mode caption,
+.night-mode tbody th,
+.night-mode td {
+  border-bottom-color: #666;
+}
+
+.night-mode tbody th,
+.night-mode td {
+  border-top-color: #666;
+}
+
+/* Footnotes */
+
+.footnotes {
+  margin-top: calc((45 / 1080) * 100%); /* 45px when width: 1080px (excluding padding) */
+  page-break-before: avoid;
+  font-size: calc((16 / 18) * 1rem); /* 0.8889rem, 16/18px @1080px wide, default for Mono */
+  line-height: calc(27 / 16); /* 1.6875, 27px @1080px wide, default for Mono */
+}
+
+.footnotes hr {
+  margin-top: calc((60 / 760) * 100%); /* 60px when width: 1080px */
+  page-break-after: avoid;
+}
+
+.footnotes p {
+  margin: 0 auto;
+}
+
+/* Remove underline on .reversefootnote arrow for iOS, as it’s turned into an emoji */
+@media screen and (max-device-width: 1024px) {
+  .reversefootnote {
+    text-decoration: none;
+  }
+}
+
+/* Footnotes responsive adjustments when width: 1080px */
+@media screen and (min-width: 1080px) {
+  .footnotes {
+    margin-top: 45px;
+  }
+
+  /* Hanging footnote ordinals */
+  .footnotes ol {
+    padding-left: 0;
+  }
+
+  .footnotes hr {
+    margin-top: 60px;
+  }
+}
+
+/* Task Lists
+   Left padding based on 40px default */
+
+/* Position ordinal counters so 1-9 left-align with left content edge. Subsequent counters will begin in gutter. */
+ol .task-list-item {
+  margin-left: var(--checkbox-counter-offset);
+  padding-left: var(--checkbox-counter-offset);
+}
+
+/* Hide default bullets for unordered task lists. */
+ul .task-list-item {
+  list-style-type: none;
+}
+
+/* Hide gen-content bullets for unordered task lists. */
+ul .task-list-item:before {
+  display: none;
+}
+
+.task-list-item-checkbox {
+  float: left; /* Removes from flow in case of paragraph list items */
+  width: var(--checkbox-size); /* line-height */
+  height: var(--checkbox-size); /* line-height */
+  margin: 0 0 0 var(--checkbox-margin-size); /* 0s to overwrite user agent styles */
+  border: none; /* Otherwise iPhone draws a border */
+  font-size: 1em; /* Required to overwrite user agent styles, set to same as p */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath d='M0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2H9c1.104 0 2 .887 2 2V9c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z' fill='%231a1a1a' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 40% 40%; /* x=roughly align with bullets and between ordinal and text, y=4px down to roughly align to baseline. */
+  background-size: 50% 50%; /* Desired size 12px / 21px line-height for Preview */
+  background-color: transparent;
+  -webkit-print-color-adjust: exact; /* Prevents from hiding when printed */
+  -webkit-appearance: none; /* Disables system checkbox image */
+  opacity: 1.0; /* Otherwise they are 0.4 on iPhone, where it applies disabled effect even with above */
+}
+
+.night-mode .task-list-item-checkbox {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath d='M0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2H9c1.104 0 2 .887 2 2V9c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z' fill='%23dedede' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.mac.night-mode .task-list-item-checkbox {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath d='M0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2H9c1.104 0 2 .887 2 2V9c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z' fill='%23cccccc' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.task-list-item-checkbox:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231a1a1a' fill-rule='evenodd'%3E%3Cpath d='M5.37 7.633l3.19-4.556c.199-.284.588-.355.873-.155a.63.63 0 0 1 .153.874l-3.59 5.128a.63.63 0 0 1-.513.269.62.62 0 0 1-.502-.177L2.79 6.825c-.243-.243-.243-.637.003-.883a.63.63 0 0 1 .883-.003L5.37 7.633h0zM0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2h6c1.104 0 2 .887 2 2v6c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z'/%3E%3C/svg%3E");
+}
+
+.night-mode .task-list-item-checkbox:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23dedede' fill-rule='evenodd'%3E%3Cpath d='M5.37 7.633l3.19-4.556c.199-.284.588-.355.873-.155a.63.63 0 0 1 .153.874l-3.59 5.128a.63.63 0 0 1-.513.269.62.62 0 0 1-.502-.177L2.79 6.825c-.243-.243-.243-.637.003-.883a.63.63 0 0 1 .883-.003L5.37 7.633h0zM0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2h6c1.104 0 2 .887 2 2v6c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z'/%3E%3C/svg%3E");
+}
+
+.mac.night-mode .task-list-item-checkbox:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23cccccc' fill-rule='evenodd'%3E%3Cpath d='M5.37 7.633l3.19-4.556c.199-.284.588-.355.873-.155a.63.63 0 0 1 .153.874l-3.59 5.128a.63.63 0 0 1-.513.269.62.62 0 0 1-.502-.177L2.79 6.825c-.243-.243-.243-.637.003-.883a.63.63 0 0 1 .883-.003L5.37 7.633h0zM0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2h6c1.104 0 2 .887 2 2v6c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z'/%3E%3C/svg%3E");
+}
+
+@supports selector(:has(a)) {
+
+  .task-list-item-checked-fade .task-list-item-checkbox:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23999999' fill-rule='evenodd'%3E%3Cpath d='M5.37 7.633l3.19-4.556c.199-.284.588-.355.873-.155a.63.63 0 0 1 .153.874l-3.59 5.128a.63.63 0 0 1-.513.269.62.62 0 0 1-.502-.177L2.79 6.825c-.243-.243-.243-.637.003-.883a.63.63 0 0 1 .883-.003L5.37 7.633h0zM0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2h6c1.104 0 2 .887 2 2v6c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z'/%3E%3C/svg%3E");
+  }
+
+  .task-list-item-checked-fade.night-mode .task-list-item-checkbox:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23808080' fill-rule='evenodd'%3E%3Cpath d='M5.37 7.633l3.19-4.556c.199-.284.588-.355.873-.155a.63.63 0 0 1 .153.874l-3.59 5.128a.63.63 0 0 1-.513.269.62.62 0 0 1-.502-.177L2.79 6.825c-.243-.243-.243-.637.003-.883a.63.63 0 0 1 .883-.003L5.37 7.633h0zM0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2h6c1.104 0 2 .887 2 2v6c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z'/%3E%3C/svg%3E");
+  }
+
+  .task-list-item-checked-fade.mac.night-mode .task-list-item-checkbox:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23808080' fill-rule='evenodd'%3E%3Cpath d='M5.37 7.633l3.19-4.556c.199-.284.588-.355.873-.155a.63.63 0 0 1 .153.874l-3.59 5.128a.63.63 0 0 1-.513.269.62.62 0 0 1-.502-.177L2.79 6.825c-.243-.243-.243-.637.003-.883a.63.63 0 0 1 .883-.003L5.37 7.633h0zM0 2.997A3 3 0 0 1 2.997 0h6.006A3 3 0 0 1 12 2.997v6.006A3 3 0 0 1 9.003 12H2.997A3 3 0 0 1 0 9.003V2.997h0zM1 3c0-1.104.887-2 2-2h6c1.104 0 2 .887 2 2v6c0 1.104-.887 2-2 2H3c-1.104 0-2-.887-2-2V3h0z'/%3E%3C/svg%3E");
+  }
+
+}
+
+.task-list-item-checked-fade .task-list-item:has(.task-list-item-checkbox:checked),
+.task-list-item-checked-fade .task-list-item:has(.task-list-item-checkbox:checked) a,
+.task-list-item-checked-fade .task-list-item:has(.task-list-item-checkbox:checked) mark {
+  color: #999999;
+}
+
+.task-list-item-checked-fade.night-mode .task-list-item:has(.task-list-item-checkbox:checked),
+.task-list-item-checked-fade.night-mode .task-list-item:has(.task-list-item-checkbox:checked) a,
+.task-list-item-checked-fade.night-mode .task-list-item:has(.task-list-item-checkbox:checked) mark {
+  color: #808080;
+}
+
+.task-list-item-checked-line-through .task-list-item:has(.task-list-item-checkbox:checked),
+.task-list-item-checked-line-through .task-list-item:has(.task-list-item-checkbox:checked) mark {
+  text-decoration: line-through;
+}
+
+.header, .footer {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#title {
+  height: 100%;
+}
+
+.title {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+address {
+    text-align: right;
+    white-space: pre;
+}
+
+/* Automatic Heading Numbering */
+
+/* Thanks to Phil Archer. http://philarcher.org/diary/2013/headingnumbers/ */
+
+.number-headings body {counter-reset: h2}
+.number-headings h2 {counter-reset: h3}
+.number-headings h3 {counter-reset: h4}
+.number-headings h4 {counter-reset: h5}
+/* .number-headings h5 {counter-reset: h6} */ /* Omitted H6. Inline headings are useful in non-hierarchical contexts */
+.number-headings h2:before {counter-increment: h2; content: counter(h2) ". "}
+.number-headings h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) ". "}
+.number-headings h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) ". "}
+.number-headings h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "}
+/* .number-headings h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "} */ /* H6 omitted as above */
+.number-headings h2.nocount:before, .number-headings h3.nocount:before, .number-headings h4.nocount:before, .number-headings h5.nocount:before, .number-headings h6.nocount:before {content: ""; counter-increment: none}
+
+/* Don't number author H2 on title page */
+.number-headings .title > h2:before {content: ""}

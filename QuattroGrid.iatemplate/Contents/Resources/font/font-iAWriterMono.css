@@ -1,0 +1,78 @@
+
+@supports (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 400 700;
+    font-style: normal;
+    src: local("iA Writer Mono"), url("iAWriterMono.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 400 700;
+    font-style: italic;
+    src: local("iA Writer Mono"), url("iAWriterMono-Italic.ttf");
+  }
+
+}
+
+@supports not (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 400;
+    font-style: normal;
+    src: local("iAWriterMono-Regular"), local("iA Writer Mono Regular"), url("iAWriterMono-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 400;
+    font-style: italic;
+    src: local("iAWriterMono-Italic"), local("iA Writer Mono Italic"), url("iAWriterMono-Italic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 450;
+    font-style: normal;
+    src: local("iAWriterMono-Text"), local("iA Writer Mono Text"), url("iAWriterMono-Text.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 450;
+    font-style: italic;
+    src: local("iAWriterMono-TextItalic"), local("iA Writer Mono Text Italic"), url("iAWriterMono-TextItalic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 600;
+    font-style: normal;
+    src: local("iAWriterMono-Semibold"), local("iA Writer Mono Semibold"), url("iAWriterMono-Semibold.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 600;
+    font-style: italic;
+    src: local("iAWriterMono-SemiboldItalic"), local("iA Writer Mono Semibold Italic"), url("iAWriterMono-SemiboldItalic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 700;
+    font-style: normal;
+    src: local("iAWriterMono-Bold"), local("iA Writer Mono Bold"), url("iAWriterMono-Bold.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono";
+    font-weight: 700;
+    font-style: italic;
+    src: local("iAWriterMono-BoldItalic"), local("iA Writer Mono Bold Italic"), url("iAWriterMono-BoldItalic.ttf");
+  }
+
+}

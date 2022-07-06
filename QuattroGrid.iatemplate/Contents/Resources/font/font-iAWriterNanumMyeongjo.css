@@ -1,0 +1,14 @@
+
+@font-face {
+  font-family: "iAWriterNanumMyeongjo";
+  font-weight: 400;
+  font-style: normal;
+  src: local("NanumMyeongjo"), local("Nanum Myeongjo");
+}
+
+@font-face {
+  font-family: "iAWriterNanumMyeongjo";
+  font-weight: 700;
+  font-style: normal;
+  src: local("NanumMyeongjoExtraBold"), local("Nanum Myeongjo ExtraBold");
+}

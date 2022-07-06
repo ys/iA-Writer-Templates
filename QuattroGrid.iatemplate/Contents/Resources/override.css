@@ -1,0 +1,12 @@
+
+@import url("style/style-lang.css");
+
+p:has(img) {
+  display:grid;
+  grid-column-gap:0.5rem;
+  grid-row-gap:0;
+  grid-template-columns:repeat(auto-fit, minmax(0, 1fr));
+}
+p:has(img) > br {
+   display:none;
+}

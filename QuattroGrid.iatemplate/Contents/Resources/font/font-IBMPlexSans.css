@@ -1,0 +1,62 @@
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 400;
+  font-style: normal;
+  src: local("IBMPlexSans"), local("IBM Plex Sans"), url("IBMPlexSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 400;
+  font-style: italic;
+  src: local("IBMPlexSans-Italic"), local("IBM Plex Sans Italic"), url("IBMPlexSans-Italic.ttf");
+}
+
+/*
+
+macOS 10.11 has a bug where it picks Text instead of Regular.
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 450;
+  font-style: normal;
+  src: local("IBMPlexSans-Text"), local("IBM Plex Sans Text"), url("IBMPlexSans-Text.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 450;
+  font-style: italic;
+  src: local("IBMPlexSans-TextItalic"), local("IBM Plex Sans Text Italic"), url("IBMPlexSans-TextItalic.ttf");
+}
+
+*/
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 600;
+  font-style: normal;
+  src: local("IBMPlexSans-Semibold"), local("IBM Plex Sans Semibold"), url("IBMPlexSans-Semibold.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 600;
+  font-style: italic;
+  src: local("IBMPlexSans-SemiboldItalic"), local("IBM Plex Sans Semibold Italic"), url("IBMPlexSans-SemiboldItalic.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 700;
+  font-style: normal;
+  src: local("IBMPlexSans-Bold"), local("IBM Plex Sans Bold"), url("IBMPlexSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 700;
+  font-style: italic;
+  src: local("IBMPlexSans-BoldItalic"), local("IBM Plex Sans Bold Italic"), url("IBMPlexSans-BoldItalic.ttf");
+}

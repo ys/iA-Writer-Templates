@@ -1,0 +1,78 @@
+
+@supports (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 400 700;
+    font-style: normal;
+    src: local("iA Writer Quattro"), url("iAWriterQuattro.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 400 700;
+    font-style: italic;
+    src: local("iA Writer Quattro"), url("iAWriterQuattro-Italic.ttf");
+  }
+
+}
+
+@supports not (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 400;
+    font-style: normal;
+    src: local("iAWriterQuattro-Regular"), local("iA Writer Quattro Regular"), url("iAWriterQuattro-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 400;
+    font-style: italic;
+    src: local("iAWriterQuattro-Italic"), local("iA Writer Quattro Italic"), url("iAWriterQuattro-Italic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 450;
+    font-style: normal;
+    src: local("iAWriterQuattro-Text"), local("iA Writer Quattro Text"), url("iAWriterQuattro-Text.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 450;
+    font-style: italic;
+    src: local("iAWriterQuattro-TextItalic"), local("iA Writer Quattro Text Italic"), url("iAWriterQuattro-TextItalic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 600;
+    font-style: normal;
+    src: local("iAWriterQuattro-Semibold"), local("iA Writer Quattro Semibold"), url("iAWriterQuattro-Semibold.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 600;
+    font-style: italic;
+    src: local("iAWriterQuattro-SemiboldItalic"), local("iA Writer Quattro Semibold Italic"), url("iAWriterQuattro-SemiboldItalic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 700;
+    font-style: normal;
+    src: local("iAWriterQuattro-Bold"), local("iA Writer Quattro Bold"), url("iAWriterQuattro-Bold.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterQuattro";
+    font-weight: 700;
+    font-style: italic;
+    src: local("iAWriterQuattro-BoldItalic"), local("iA Writer Quattro Bold Italic"), url("iAWriterQuattro-BoldItalic.ttf");
+  }
+
+}

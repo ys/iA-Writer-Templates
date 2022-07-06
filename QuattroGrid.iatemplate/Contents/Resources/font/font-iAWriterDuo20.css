@@ -1,0 +1,60 @@
+
+@supports not (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterDuo20";
+    font-weight: 400;
+    font-style: normal;
+    src: local("iAWriterDuo-Regular20"), local("iA Writer Duo Regular 20"), url("iAWriterDuo-Regular20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo20";
+    font-weight: 400;
+    font-style: italic;
+    src: local("iAWriterDuo-Italic20"), local("iA Writer Duo Italic 20"), url("iAWriterDuo-Italic20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo20";
+    font-weight: 450;
+    font-style: normal;
+    src: local("iAWriterDuo-Text20"), local("iA Writer Duo Text 20"), url("iAWriterDuo-Text20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo20";
+    font-weight: 450;
+    font-style: italic;
+    src: local("iAWriterDuo-TextItalic20"), local("iA Writer Duo Text Italic 20"), url("iAWriterDuo-TextItalic20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo20";
+    font-weight: 600;
+    font-style: normal;
+    src: local("iAWriterDuo-Semibold20"), local("iA Writer Duo Semibold 20"), url("iAWriterDuo-Semibold20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo20";
+    font-weight: 600;
+    font-style: italic;
+    src: local("iAWriterDuo-SemiboldItalic20"), local("iA Writer Duo Semibold Italic 20"), url("iAWriterDuo-SemiboldItalic20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo20";
+    font-weight: 700;
+    font-style: normal;
+    src: local("iAWriterDuo-Bold20"), local("iA Writer Duo Bold 20"), url("iAWriterDuo-Bold20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo20";
+    font-weight: 700;
+    font-style: italic;
+    src: local("iAWriterDuo-BoldItalic20"), local("iA Writer Duo Bold Italic 20"), url("iAWriterDuo-BoldItalic20.ttf");
+  }
+
+}

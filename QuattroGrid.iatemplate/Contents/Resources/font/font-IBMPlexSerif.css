@@ -1,0 +1,62 @@
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  font-weight: 400;
+  font-style: normal;
+  src: local("IBMPlexSerif"), local("IBM Plex Serif"), url("IBMPlexSerif-Regular.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  font-weight: 400;
+  font-style: italic;
+  src: local("IBMPlexSerif-Italic"), local("IBM Plex Serif Italic"), url("IBMPlexSerif-Italic.ttf");
+}
+
+/*
+
+macOS 10.11 has a bug where it picks Text instead of Regular.
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  font-weight: 450;
+  font-style: normal;
+  src: local("IBMPlexSerif-Text"), local("IBM Plex Serif Text"), url("IBMPlexSerif-Text.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  font-weight: 450;
+  font-style: italic;
+  src: local("IBMPlexSerif-TextItalic"), local("IBM Plex Serif Text Italic"), url("IBMPlexSerif-TextItalic.ttf");
+}
+
+*/
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  font-weight: 600;
+  font-style: normal;
+  src: local("IBMPlexSerif-Semibold"), local("IBM Plex Serif Semibold"), url("IBMPlexSerif-Semibold.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  font-weight: 600;
+  font-style: italic;
+  src: local("IBMPlexSerif-SemiboldItalic"), local("IBM Plex Serif Semibold Italic"), url("IBMPlexSerif-SemiboldItalic.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  font-weight: 700;
+  font-style: normal;
+  src: local("IBMPlexSerif-Bold"), local("IBM Plex Serif Bold"), url("IBMPlexSerif-Bold.ttf");
+}
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  font-weight: 700;
+  font-style: italic;
+  src: local("IBMPlexSerif-BoldItalic"), local("IBM Plex Serif Bold Italic"), url("IBMPlexSerif-BoldItalic.ttf");
+}

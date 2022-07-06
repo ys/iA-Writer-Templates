@@ -1,0 +1,78 @@
+
+@supports (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 400 700;
+    font-style: normal;
+    src: local("iA Writer Duo"), url("iAWriterDuo.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 400 700;
+    font-style: italic;
+    src: local("iA Writer Duo"), url("iAWriterDuo-Italic.ttf");
+  }
+
+}
+
+@supports not (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 400;
+    font-style: normal;
+    src: local("iAWriterDuo-Regular"), local("iA Writer Duo Regular"), url("iAWriterDuo-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 400;
+    font-style: italic;
+    src: local("iAWriterDuo-Italic"), local("iA Writer Duo Italic"), url("iAWriterDuo-Italic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 450;
+    font-style: normal;
+    src: local("iAWriterDuo-Text"), local("iA Writer Duo Text"), url("iAWriterDuo-Text.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 450;
+    font-style: italic;
+    src: local("iAWriterDuo-TextItalic"), local("iA Writer Duo Text Italic"), url("iAWriterDuo-TextItalic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 600;
+    font-style: normal;
+    src: local("iAWriterDuo-Semibold"), local("iA Writer Duo Semibold"), url("iAWriterDuo-Semibold.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 600;
+    font-style: italic;
+    src: local("iAWriterDuo-SemiboldItalic"), local("iA Writer Duo Semibold Italic"), url("iAWriterDuo-SemiboldItalic.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 700;
+    font-style: normal;
+    src: local("iAWriterDuo-Bold"), local("iA Writer Duo Bold"), url("iAWriterDuo-Bold.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterDuo";
+    font-weight: 700;
+    font-style: italic;
+    src: local("iAWriterDuo-BoldItalic"), local("iA Writer Duo Bold Italic"), url("iAWriterDuo-BoldItalic.ttf");
+  }
+
+}

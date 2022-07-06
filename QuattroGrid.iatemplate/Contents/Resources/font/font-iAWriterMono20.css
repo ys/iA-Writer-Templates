@@ -1,0 +1,60 @@
+
+@supports not (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterMono20";
+    font-weight: 400;
+    font-style: normal;
+    src: local("iAWriterMono-Regular20"), local("iA Writer Mono Regular 20"), url("iAWriterMono-Regular20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono20";
+    font-weight: 400;
+    font-style: italic;
+    src: local("iAWriterMono-Italic20"), local("iA Writer Mono Italic 20"), url("iAWriterMono-Italic20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono20";
+    font-weight: 450;
+    font-style: normal;
+    src: local("iAWriterMono-Text20"), local("iA Writer Mono Text 20"), url("iAWriterMono-Text20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono20";
+    font-weight: 450;
+    font-style: italic;
+    src: local("iAWriterMono-TextItalic20"), local("iA Writer Mono Text Italic 20"), url("iAWriterMono-TextItalic20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono20";
+    font-weight: 600;
+    font-style: normal;
+    src: local("iAWriterMono-Semibold20"), local("iA Writer Mono Semibold 20"), url("iAWriterMono-Semibold20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono20";
+    font-weight: 600;
+    font-style: italic;
+    src: local("iAWriterMono-SemiboldItalic20"), local("iA Writer Mono Semibold Italic 20"), url("iAWriterMono-SemiboldItalic20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono20";
+    font-weight: 700;
+    font-style: normal;
+    src: local("iAWriterMono-Bold20"), local("iA Writer Mono Bold 20"), url("iAWriterMono-Bold20.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterMono20";
+    font-weight: 700;
+    font-style: italic;
+    src: local("iAWriterMono-BoldItalic20"), local("iA Writer Mono Bold Italic 20"), url("iAWriterMono-BoldItalic20.ttf");
+  }
+
+}

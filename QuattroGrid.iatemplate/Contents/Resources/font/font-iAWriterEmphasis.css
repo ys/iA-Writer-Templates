@@ -1,0 +1,32 @@
+
+@font-face {
+  font-family: "iAWriterEmphasis";
+  font-weight: 400;
+  font-style: normal;
+  unicode-range: U+E000-E001;
+  src: local("iAWriterEmphasis-Regular"), local("iA Writer Emphasis Regular"), url("iAWriterEmphasis-Regular.ttf");
+}
+
+@font-face {
+  font-family: "iAWriterEmphasis";
+  font-weight: 450;
+  font-style: normal;
+  unicode-range: U+E000-E001;
+  src: local("iAWriterEmphasis-Text"), local("iA Writer Emphasis Text"), url("iAWriterEmphasis-Text.ttf");
+}
+
+@font-face {
+  font-family: "iAWriterEmphasis";
+  font-weight: 600;
+  font-style: normal;
+  unicode-range: U+E000-E001;
+  src: local("iAWriterEmphasis-Semibold"), local("iA Writer Emphasis Semibold"), url("iAWriterEmphasis-Semibold.ttf");
+}
+
+@font-face {
+  font-family: "iAWriterEmphasis";
+  font-weight: 700;
+  font-style: normal;
+  unicode-range: U+E000-E001;
+  src: local("iAWriterEmphasis-Bold"), local("iA Writer Emphasis Bold"), url("iAWriterEmphasis-Bold.ttf");
+}

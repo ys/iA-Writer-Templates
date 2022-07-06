@@ -1,0 +1,14 @@
+
+@font-face {
+  font-family: "iAWriterPingFangTC";
+  font-weight: 400;
+  font-style: normal;
+  src: local("PingFangTC-Regular"), local("PingFang TC Regular");
+}
+
+@font-face {
+  font-family: "iAWriterPingFangTC";
+  font-weight: 700;
+  font-style: normal;
+  src: local("PingFangTC-Bold"), local("PingFang TC Bold");
+}

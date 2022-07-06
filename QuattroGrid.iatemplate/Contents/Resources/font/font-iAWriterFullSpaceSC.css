@@ -1,0 +1,48 @@
+
+@supports (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterFullSpaceSC";
+    font-weight: 400 700;
+    font-style: normal;
+    unicode-range: U+0-8, U+B-C, U+E-1F, U+21-9F, U+A1-2027, U+202A-FFFF;
+    src: local("iA Writer FullSpace SC"), url("iAWriterFullSpaceSC.ttf");
+  }
+
+}
+
+@supports not (font-variation-settings: normal) {
+
+  @font-face {
+    font-family: "iAWriterFullSpaceSC";
+    font-weight: 400;
+    font-style: normal;
+    unicode-range: U+0-8, U+B-C, U+E-1F, U+21-9F, U+A1-2027, U+202A-FFFF;
+    src: local("iAWriterFullSpaceSC-Regular"), local("iA Writer FullSpace SC Regular"), url("iAWriterFullSpaceSC-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterFullSpaceSC";
+    font-weight: 450;
+    font-style: normal;
+    unicode-range: U+0-8, U+B-C, U+E-1F, U+21-9F, U+A1-2027, U+202A-FFFF;
+    src: local("iAWriterFullSpaceSC-Text"), local("iA Writer FullSpace SC Text"), url("iAWriterFullSpaceSC-Text.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterFullSpaceSC";
+    font-weight: 600;
+    font-style: normal;
+    unicode-range: U+0-8, U+B-C, U+E-1F, U+21-9F, U+A1-2027, U+202A-FFFF;
+    src: local("iAWriterFullSpaceSC-Semibold"), local("iA Writer FullSpace SC Semibold"), url("iAWriterFullSpaceSC-Semibold.ttf");
+  }
+
+  @font-face {
+    font-family: "iAWriterFullSpaceSC";
+    font-weight: 700;
+    font-style: normal;
+    unicode-range: U+0-8, U+B-C, U+E-1F, U+21-9F, U+A1-2027, U+202A-FFFF;
+    src: local("iAWriterFullSpaceSC-Bold"), local("iA Writer FullSpace SC Bold"), url("iAWriterFullSpaceSC-Bold.ttf");
+  }
+
+}
