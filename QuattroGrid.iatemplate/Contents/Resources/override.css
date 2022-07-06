@@ -2,11 +2,18 @@
 @import url("style/style-lang.css");
 
 p:has(img) {
-  display:grid;
-  grid-column-gap:0.5rem;
-  grid-row-gap:0;
-  grid-template-columns:repeat(auto-fit, minmax(0, 1fr));
+  display:flex;
+  gap: 0.5rem;
+  overflow: hidden;
 }
+
+p:has(img) img {
+  flex: 0 1 auto;
+  min-width: 0;
+  aspect-ratio: auto;
+  overflow: hidden;
+}
+
 p:has(img) > br {
    display:none;
 }
